@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vanik UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vanik-ui.css">
+  <style>
+    main { max-width: 920px; margin: 0 auto; padding: 48px 16px 96px; } section { margin-top: 48px; } section > h2 { margin-bottom: 16px; }
+    .sw { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; } .sw div { border: 1px solid var(--vnk-border); border-radius: 10px; overflow: hidden; font-size: 12px; }
+    .sw i { display: block; height: 52px; } .sw span { display: block; padding: 8px 10px; } .demo { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    pre { background: var(--vnk-surface-2); border: 1px solid var(--vnk-border); border-radius: 10px; padding: 12px 14px; font: 12px/1.6 var(--mono); overflow-x: auto; margin: 12px 0 0; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="row" style="justify-content:space-between">
+    <span class="vk-brand"><small>Vanik Edge</small><b>Vanik UI</b></span>
+    <button class="btn ghost" id="theme">Dark</button>
+  </div>
+  <h1 style="margin-top:32px">Ink on paper, one accent, quiet motion.</h1>
+  <p class="sub" style="margin-top:12px;max-width:560px">A small library for every Vanik product. Two files, no build step. The rules and the reasons are in <a href="DESIGN_LANGUAGE.md" style="text-decoration:underline">DESIGN_LANGUAGE.md</a>.</p>
+
+  <section><h2>Colour</h2>
+    <div class="sw" id="sw"></div>
+  </section>
+
+  <section><h2>Type</h2>
+    <h1>Page title, 28</h1><h2 style="margin-top:12px">Section, 20</h2><h3 style="margin-top:12px">Card title, 15</h3>
+    <p style="margin-top:12px">Body text at 14 with a line height of 1.5. Short sentences, plain words.</p>
+    <p class="small muted" style="margin-top:6px">Small, 12.5, for secondary detail.</p><p class="cap" style="margin-top:10px">Label</p><p class="mono" style="margin-top:6px">VNK-4F2A-91C0 · 12,480.50</p>
+  </section>
+
+  <section><h2>Actions</h2>
+    <div class="demo"><button class="btn">Add an app</button><button class="btn ghost">Cancel</button><button class="btn text">More</button><button class="btn danger">Delete</button><button class="btn" disabled>Saving</button></div>
+    <p class="small muted" style="margin-top:10px">One filled button per screen.</p>
+  </section>
+
+  <section><h2>Inputs</h2>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <label class="field"><span>Name</span><input class="input" placeholder="Head office appliance"></label>
+      <label class="field"><span>Role</span><select class="input"><option>Member</option><option>Admin</option></select></label>
+    </div>
+    <div class="demo" style="margin-top:16px">
+      <button class="switch on" role="switch" aria-checked="true" aria-label="Notifications" onclick="this.classList.toggle('on')"></button>
+      <div class="seg"><button class="on">All</button><button>Mine</button><button>Done</button></div>
+      <button class="toggle on" onclick="this.classList.toggle('on')">With transcript</button><button class="toggle" onclick="this.classList.toggle('on')">Focus only</button>
+    </div>
+    <p class="small muted" style="margin-top:10px">A filter shows a dot when it is on, so it never reads as a label.</p>
+  </section>
+
+  <section><h2>Labels</h2>
+    <div class="demo"><span class="chip ok"><i></i>Running</span><span class="chip warn"><i></i>Needs you</span><span class="chip err"><i></i>Failed</span><span class="chip"><i></i>Stopped</span><span class="tag on">solar</span><span class="tag">Pune</span><span class="avatar">RK</span></div>
+  </section>
+
+  <section><h2>Surfaces</h2>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div class="card next"><div class="card-head"><h3>Do this next</h3></div><p class="muted">One card, one button. This is the whole first run.</p><button class="btn" style="margin-top:14px">Add your first app</button></div>
+      <div class="card"><div class="set-row"><div class="grow"><div class="lbl">Notifications</div><div class="small muted">A daily email of what you owe</div></div><button class="switch on" aria-label="Notifications"></button></div><div class="set-row"><div class="grow"><div class="lbl">Role</div></div><span class="chip">Member</span></div></div>
+    </div>
+    <div class="card" style="margin-top:16px;padding:0"><table class="list"><tr><th>App</th><th>State</th><th>People</th></tr><tr><td><b>Vanik Sense</b></td><td><span class="chip ok"><i></i>Running</span></td><td>Everyone</td></tr><tr><td><b>Vanik Scout</b></td><td><span class="chip ok"><i></i>Running</span></td><td>HR</td></tr></table></div>
+    <div class="banner" style="margin-top:16px">One line that says what needs attention.</div>
+    <div class="empty" style="margin-top:16px">Nothing here yet. Drop a file to begin.</div>
+  </section>
+
+  <section><h2>Hints</h2>
+    <p class="muted">A "?" tag that opens a small moving picture. It pulses until it has been opened once. <span style="margin-left:6px" id="hint-here"></span></p>
+    <pre>VanikUI.hint.define('ask', { title: 'How asking works', steps: [
+  { label: 'Ask', text: 'Type a question in your own words.' },
+  { label: 'Look', text: 'It searches only the documents you can read.' },
+  { label: 'Answer', text: 'You get an answer with its sources, or "not found".' } ] });
+
+&lt;button class="vk-hint" data-vk-hint="ask" aria-label="How asking works"&gt;&lt;/button&gt;</pre>
+  </section>
+</main>
+<script src="vanik-ui.js"></script>
+<script>
+  const T = ['bg', 'surface', 'surface-2', 'border', 'border-2', 'ink', 'ink-2', 'ink-3', 'brand', 'ok', 'warn', 'err'];
+  document.getElementById('sw').innerHTML = T.map(t => `<div><i style="background:var(--vnk-${t})"></i><span class="mono">--vnk-${t}</span></div>`).join('');
+  document.getElementById('theme').onclick = e => { const d = document.documentElement, dark = d.dataset.theme !== 'dark'; d.dataset.theme = dark ? 'dark' : 'light'; e.target.textContent = dark ? 'Light' : 'Dark'; };
+  VanikUI.hint.define('ask', { title: 'How asking works', steps: [{ label: 'Ask', text: 'Type a question in your own words.' }, { label: 'Look', text: 'It searches only the documents you can read.' }, { label: 'Answer', text: 'You get an answer with its sources, or "not found".' }] });
+  document.getElementById('hint-here').innerHTML = VanikUI.hint.tag('ask');
+</script>
+</body>
+</html>
